@@ -1,0 +1,39 @@
+@import "@kamalion/ui/dist/styles.css";
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+:root {
+  --accent: 122, 95, 234;
+
+  --background: #F4F4F4;
+  --muted: @apply text-zinc-800;
+
+  --input-foreground: @apply text-zinc-300;
+  --dialog-background: var(--background);
+
+  font-family: Montserrat, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  @apply w-screen h-screen;
+}
+
+div[role="section"] {
+  @apply bg-slate-100 bg-opacity-5 border border-slate-500 shadow-lg rounded-lg;
+}
+
+button {
+  @apply border-none;
+}
+
+button[role="checkbox"] {
+  @apply border-[--border] border-solid bg-white;
+}
