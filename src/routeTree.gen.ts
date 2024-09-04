@@ -18,6 +18,7 @@ import { Route as LoginIndexImport } from './routes/login/index'
 import { Route as authenticatedAppImport } from './routes/(authenticated)/_app'
 import { Route as authenticatedAppMonthsIndexImport } from './routes/(authenticated)/_app/months/index'
 import { Route as authenticatedAppFixedentriesIndexImport } from './routes/(authenticated)/_app/fixed_entries/index'
+import { Route as authenticatedAppExpectedpaymentsIndexImport } from './routes/(authenticated)/_app/expected_payments/index'
 import { Route as authenticatedAppDashboardIndexImport } from './routes/(authenticated)/_app/dashboard/index'
 
 // Create Virtual Routes
@@ -55,6 +56,12 @@ const authenticatedAppMonthsIndexRoute =
 const authenticatedAppFixedentriesIndexRoute =
   authenticatedAppFixedentriesIndexImport.update({
     path: '/fixed_entries/',
+    getParentRoute: () => authenticatedAppRoute,
+  } as any)
+
+const authenticatedAppExpectedpaymentsIndexRoute =
+  authenticatedAppExpectedpaymentsIndexImport.update({
+    path: '/expected_payments/',
     getParentRoute: () => authenticatedAppRoute,
   } as any)
 
@@ -103,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authenticatedAppDashboardIndexImport
       parentRoute: typeof authenticatedAppImport
     }
+    '/(authenticated)/_app/expected_payments/': {
+      id: '/_app/expected_payments/'
+      path: '/expected_payments'
+      fullPath: '/expected_payments'
+      preLoaderRoute: typeof authenticatedAppExpectedpaymentsIndexImport
+      parentRoute: typeof authenticatedAppImport
+    }
     '/(authenticated)/_app/fixed_entries/': {
       id: '/_app/fixed_entries/'
       path: '/fixed_entries'
@@ -127,6 +141,7 @@ export const routeTree = rootRoute.addChildren({
   authenticatedRoute: authenticatedRoute.addChildren({
     authenticatedAppRoute: authenticatedAppRoute.addChildren({
       authenticatedAppDashboardIndexRoute,
+      authenticatedAppExpectedpaymentsIndexRoute,
       authenticatedAppFixedentriesIndexRoute,
       authenticatedAppMonthsIndexRoute,
     }),
@@ -158,6 +173,7 @@ export const routeTree = rootRoute.addChildren({
       "parent": "/",
       "children": [
         "/_app/dashboard/",
+        "/_app/expected_payments/",
         "/_app/fixed_entries/",
         "/_app/months/"
       ]
@@ -167,6 +183,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_app/dashboard/": {
       "filePath": "(authenticated)/_app/dashboard/index.tsx",
+      "parent": "/_app"
+    },
+    "/_app/expected_payments/": {
+      "filePath": "(authenticated)/_app/expected_payments/index.tsx",
       "parent": "/_app"
     },
     "/_app/fixed_entries/": {

@@ -23,7 +23,7 @@ export function PayEntryFormDialog({ monthId, entry }: Props) {
   const payEntry = useMutation({
     mutationFn: api.payEntry,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["entries", monthId, entry.id] });
+      queryClient.invalidateQueries({ queryKey: ["entries", monthId] });
     },
   });
 

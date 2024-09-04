@@ -6,6 +6,7 @@ import { Origin } from "../entities/origin";
 import { Category } from "../entities/category";
 import { MonthEntry } from "../entities/month_entry";
 import { FixedEntry } from "../entities/fixed_entry";
+import { MonthlyExpectedPayment } from "../entities/monthly_expected_payment";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -61,4 +62,11 @@ export const api = {
         },
       })
       .then((data) => data.data),
+
+  listMonthlyExpectedPayments: () =>
+    client.get<Paginated<MonthlyExpectedPayment>>(`/monthlyExpectedPayments`).then((data) => data.data),
+  createMonthlyExpectedPayment: (ep: MonthlyExpectedPayment) => {
+    console.log({ ep });
+    client.post<MonthlyExpectedPayment>(`/monthlyExpectedPayments`, ep).then((data) => data.data);
+  },
 };

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { api } from "../../../../api/api";
 import { useState } from "react";
-import { Box, Button, cn, Input, useDialog } from "@kamalion/ui";
+import { Box, Button, Input, useDialog } from "@kamalion/ui";
 import { GoChevronLeft, GoChevronRight, GoPlus } from "react-icons/go";
 import { LuFolderOpen } from "react-icons/lu";
 import { formatInTimeZone } from "date-fns-tz";
