@@ -31,7 +31,7 @@ function ExpectedPaymentsPage() {
   }
 
   return (
-    <div>
+    <div className="space-y-5">
       <div className="flex items-center">
         <div className="flex w-full">
           <Button.Root variant="accent" onClick={handleAdd}>
@@ -43,21 +43,32 @@ function ExpectedPaymentsPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-5">
         {expectedPayments?.items?.map((entry) => (
-          <div key={entry.id} className=" transition cursor-pointer hover:bg-accent" onClick={() => handleEdit(entry)}>
-            <div>
-              <Input.Root>
-                <Input.Label>Amount</Input.Label>
-                <Input.Number type="money" value={entry.amount} name="amount" displayType="text" />
-              </Input.Root>
-            </div>
-            <div className="">
-              <div>Name</div>
-              <div>{entry.name}</div>
-            </div>
-            <div className="">Day {entry.day}</div>
-          </div>
+          <Box.Root
+            role="section"
+            key={entry.id}
+            className="transition cursor-pointer hover:bg-accent"
+            onClick={() => handleEdit(entry)}
+          >
+            <Box.Content className="space-y-3">
+              <div>
+                <Input.Root>
+                  <Input.Label className="text-muted text-xs">Amount</Input.Label>
+                  <Input.Number type="money" value={entry.amount} name="amount" displayType="text" />
+                </Input.Root>
+              </div>
+
+              <div className="">
+                <div className="text-muted text-xs">Name</div>
+                <div>{entry.name}</div>
+              </div>
+              <div className="">
+                <div className="text-muted text-xs">Expected Day</div>
+                <div>{entry.day}</div>
+              </div>
+            </Box.Content>
+          </Box.Root>
         ))}
       </div>
     </div>
